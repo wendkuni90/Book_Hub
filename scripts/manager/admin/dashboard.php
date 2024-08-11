@@ -22,6 +22,7 @@
                     <li><a href="#">Bibliothécaires</a></li>
                     <li><a href="#">Profil</a></li>
                     <li><a href="#">Editer Profil</a></li>
+                    <li><a href="#">Se déconnecter</a></li>
                 </ul>
             </nav>
         </aside>
