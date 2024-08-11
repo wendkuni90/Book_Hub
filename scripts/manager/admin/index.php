@@ -43,14 +43,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Login</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+
     <!-- Cette page devra permettre à l'administrateur prinipal de se logguer -->
-    <h1>Administrateur</h1>
+    <!-- <h1>Administrateur</h1>
     <form action="index.php" method="POST">
         <input type="text" name="name" placeholder="Nom" required>
         <input type="password" name="password" placeholder="Mot de Passe" required>
         <input type="submit" name="submit" value="Se Connecter">
-    </form>
+    </form> -->
+    <div class="mondiv">
+        <div class="login-container">
+            <h1>Book<strong>Hub</strong></h1>
+            <h2>Connexion</h2>
+            <form action="index.php" method="POST">
+                <div class="input-group">
+                    <label for="username">Nom d'utilisateur</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="input-group">
+                    <label for="password">Mot de passe</label>
+                    <input type="password" id="password" name="password" required>
+                    <button type="button" id="togglePassword">Afficher</button>
+                </div>
+                <button type="submit" name="submit" class="login-button">Se connecter</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="login-script.js"></script>
 </body>
 </html>
