@@ -1,3 +1,4 @@
-<?php require "includes/header.php" ?>
+<?php require "includes/session.php" ?>
 <?php require "../../../config/config.php" ?>
-dashboard
+
+Dashboard
