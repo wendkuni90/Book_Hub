@@ -8,6 +8,7 @@
 
         $conn = new PDO("mysql:host=$SERVER;dbname=$DBNAME",$LOGIN,$PASS);
         $conn->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+        echo "Connexion avec la base de données établie<br>";
 
     }catch(PDOException $e){
 
