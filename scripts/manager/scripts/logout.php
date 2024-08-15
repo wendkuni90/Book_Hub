@@ -1,2 +1,10 @@
-<?php require "../../../config/config.php" ?>
-Admin logout
+<?php require "../../../config/link.php" ?>
+<?php 
+
+    session_start();
+    session_unset();
+    session_destroy();
+
+    header("location: ".APPURL."");
+
+?>

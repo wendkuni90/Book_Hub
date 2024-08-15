@@ -1,5 +1,12 @@
 <?php require "includes/session.php" ?>
 <?php require "../../../config/config.php" ?>
+<?php 
+    define("log", "http://localhost/Book_Hub/scripts/manager/admin/");
+    if(!isset($_SESSION['name'])){
+        header("location: ".log."");
+    }
+
+?>
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -14,15 +21,19 @@
         <!-- Sidebar -->
         <aside class="sidebar">
             <div class="logo">
-                <h2>Admin</h2>
+                <?php if(isset($_SESSION['name'])): ?>
+                    <h2 style="text-transform: uppercase;">
+                    <?php echo $_SESSION['name']; ?>
+                    </h2>
+                <?php endif; ?>
             </div>
             <nav>
                 <ul>
                     <li><a href="#">Tableau de bord</a></li>
                     <li><a href="#">Bibliothécaires</a></li>
                     <li><a href="#">Profil</a></li>
-                    <li><a href="#">Editer Profil</a></li>
-                    <li><a href="#">Se déconnecter</a></li>
+                    <li><a href="../scripts/edit_profile.php">Editer Profil</a></li>
+                    <li><a href="../scripts/logout.php">Se déconnecter</a></li>
                 </ul>
             </nav>
         </aside>

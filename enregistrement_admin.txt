@@ -1,5 +1,9 @@
 <?php
 
+    if(isset($_SESSION['name'])){
+        echo "<script>window.location.href='dashboard.php'</script>";
+    }
+
     if(isset($_POST['submit'])){
         if(empty($_POST['name']) OR empty($_POST['password'])){
             echo "<script>alert('Attention: Un des champs est vide.')</script><br>";
