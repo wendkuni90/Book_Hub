@@ -38,6 +38,11 @@
                             ":admin_pass" => $conpass,
                             ":admin_id" => $id
                         ]);
+                        
+                        session_start();
+                        session_unset();
+                        session_destroy();
+
                         header("location: ".log."");
 
                     }else{
