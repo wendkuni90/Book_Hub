@@ -8,5 +8,5 @@ document.getElementById('image-upload').addEventListener('change', function(even
 
 document.getElementById('profile-form').addEventListener('submit', function(event) {
     event.preventDefault();
-    alert('Profile saved successfully!');
+    alert('Profil modifié avec succès!');
 });

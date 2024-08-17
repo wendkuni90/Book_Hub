@@ -6,6 +6,50 @@
         header("location: ".log."");
     }
 
+    if(isset($_POST['submit'])){
+        if(empty($_POST['name']) OR empty($_POST['oldpassword']) OR empty($_POST['newpassword']) OR empty($_POST['conpassword'])){
+            echo "<script>alert('Attention: Un des champs est vide.')</script><br>";
+        } else {
+
+            $oldname = $_SESSION['name'];
+            $oldpassword = $_POST['oldpassword'];
+            //Validation du nom entré
+            $login = $conn->query("SELECT * FROM admin WHERE admin_name='$oldname'");
+            $login->execute();
+
+            $fetch = $login->fetch(PDO::FETCH_ASSOC);
+
+            //Validation du mot de passe
+            if($login->rowCount() > 0){
+                if(password_verify($oldpassword, $fetch['admin_pass'])){
+                    
+                    //Vérifions maintenant si les deux champs de mdp correspondent
+                    $newpass = $_POST['newpassword'];
+                    $conpass = password_hash($_POST['conpassword'], PASSWORD_DEFAULT);
+
+                    if(password_verify($newpass, $conpass)){
+                        $newname = $_POST['name'];
+                        $id = $fetch['admin_id'];
+
+                        $sql = "UPDATE TABLE admin SET admin_name=?, admin_pass=? WHERE admin_id=?";
+                        $insert = $conn->prepare($sql);
+                        $insert->execute([$newname,$conpass,$id]);
+                        header("location: ".log."");
+
+                    }else{
+                        echo "<script>alert('Mise à jour pfffff')</script><br>";
+                    }
+
+                } else {
+                    echo "<script>alert('Mise à jour refusée: Données Incorrects')</script><br>";
+                }
+            } else {
+                echo "<script>alert('Mise à jour refusée: Données Incorrects')</script><br>";
+            }
+
+        }
+    }   
+
 ?>
 
 <!DOCTYPE html>
@@ -23,7 +67,7 @@
         
         <div class="info">
             <h2>Edition du profil</h2>
-            <form id="profile-form" method="POST" action="#">
+            <form action="edit_profile.php" method="POST" id="profile-form">
                 <label for="name">Nom</label>
                 <input type="text" id="name" name="name" value="<?= $_SESSION['name'] ?>" required>
                 
@@ -36,7 +80,7 @@
                 <label for="conpassword">Confirmez Mot de passe</label>
                 <input type="password" id="conpassword" name="conpassword" placeholder="Confirmez mot de passe" required>
                 
-                <button type="submit">Mettre à jour</button>
+                <button type="submit" name="submit">Mettre à jour</button>
                 
             </form>
         </div>

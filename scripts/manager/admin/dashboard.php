@@ -5,7 +5,8 @@
     if(!isset($_SESSION['name'])){
         header("location: ".log."");
     }
-
+    // $stmt = $conn->query('SELECT * FROM admin');
+    // $row = $stmt->fetch(PDO::FETCH_ASSOC);
 ?>
 
 <!DOCTYPE html>
