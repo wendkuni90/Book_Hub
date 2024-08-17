@@ -23,7 +23,7 @@
         <aside class="sidebar">
             <div class="logo">
                 <?php if(isset($_SESSION['name'])): ?>
-                    <h2 style="text-transform: uppercase;">
+                    <h2 style="text-transform: uppercase; font-size:22px;">
                     <?php echo $_SESSION['name']; ?>
                     </h2>
                 <?php endif; ?>

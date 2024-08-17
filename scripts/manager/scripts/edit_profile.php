@@ -31,13 +31,17 @@
                         $newname = $_POST['name'];
                         $id = $fetch['admin_id'];
 
-                        $sql = "UPDATE TABLE admin SET admin_name=?, admin_pass=? WHERE admin_id=?";
-                        $insert = $conn->prepare($sql);
-                        $insert->execute([$newname,$conpass,$id]);
+                        $update = $conn->prepare("UPDATE admin SET admin_name = :admin_name, admin_pass = :admin_pass WHERE admin_id = :admin_id");
+
+                        $update->execute([
+                            ":admin_name" => $newname,
+                            ":admin_pass" => $conpass,
+                            ":admin_id" => $id
+                        ]);
                         header("location: ".log."");
 
                     }else{
-                        echo "<script>alert('Mise à jour pfffff')</script><br>";
+                        echo "<script>alert('Mots de passe non identiques')</script><br>";
                     }
 
                 } else {
